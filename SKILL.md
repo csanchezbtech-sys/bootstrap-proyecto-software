@@ -71,6 +71,13 @@ completo, siempre (salvo el bloque 2.4, que es condicional), sin pasar por
 `find-skills` ni pedir confirmación: son skills de comportamiento/
 infraestructura, no acciones irreversibles.
 
+**Regla dura: todo esto se instala a nivel de proyecto, nunca a nivel de
+usuario.** Ningún comando `npx skills add` de este paso lleva `-g` — ese flag
+instala a nivel de usuario (`~/.claude/skills/`, compartido entre *todos* los
+proyectos de la máquina), y este set base es específico del proyecto que se
+está bootstrapeando. Instalarlo globalmente mezclaría el catálogo de skills
+de proyectos distintos en la misma máquina.
+
 ### 2.1 — Del ecosistema (instalación directa, sin adaptar)
 
 Corre las 11 en cualquier orden — pueden ir en paralelo. Si algún comando
@@ -197,5 +204,7 @@ un proyecto de software terminan siendo skills simples.
   Shopify, no generalizan.
 - No instales una skill del Paso 4 sin verificar su calidad real solo porque
   el nombre suena bien.
+- No agregues `-g` a ningún `npx skills add` — ni en el set base ni en lo
+  que se busque en el Paso 4. Todo va a nivel de proyecto.
 - No documentes algo como instalado antes de instalarlo de verdad — verifica
   en disco al final, no confíes en la memoria de la conversación.

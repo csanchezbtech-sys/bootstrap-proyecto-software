@@ -45,6 +45,12 @@ Esto descarga el skill dentro de `.claude/skills/bootstrap-proyecto-software/` d
 proyecto actual. No hace falta invocarlo a mano — Claude Code lo activa solo cuando
 detecta que el usuario quiere arrancar un proyecto de software nuevo.
 
+**Instálala siempre a nivel de proyecto, nunca a nivel de usuario.** No agregues
+`-g` al comando — ese flag la instalaría en `~/.claude/skills/`, compartida entre
+todos tus proyectos. Esta skill (y todo el set base que ella instala) es específica
+del proyecto que estás bootstrapeando; instalarla globalmente mezclaría el catálogo
+de skills de proyectos distintos en la misma máquina.
+
 ### Alternativa manual (sin `npx skills`)
 
 ```bash
