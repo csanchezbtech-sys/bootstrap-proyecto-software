@@ -52,6 +52,24 @@ Con las respuestas, sigue los pasos 1-6 **ejecutando directamente** — no te
 detengas a proponer un plan y esperar aprobación en cada paso, salvo antes de
 cualquier acción irreversible (borrar algo, publicar, forzar un push).
 
+## Paso 0.5 — Repositorio privado con remoto, antes del primer commit de código
+
+Estándar de la casa, pedido por el socio el 2026-10-28: **todo proyecto nuevo
+nace con su repositorio privado en GitHub**, no «cuando haga falta». Un repo
+sin remoto es trabajo que solo existe en un disco.
+
+1. Comprueba: `git remote -v`. Si ya hay `origin`, sigue al Paso 1.
+2. Si no: `git init` si hace falta, rama `main`, y
+   `gh repo create <cuenta>/<nombre> --private --source=. --remote=origin --push`.
+   La cuenta es la del `gh auth status` activo; el nombre, el de la carpeta en
+   minúsculas y con guiones.
+3. Antes de empujar, revisa que no vaya nada que no deba salir: `.env`, tokens,
+   datos generados (añádelos a `.gitignore`).
+4. Comprueba que quedó privado: `gh repo view --json visibility`.
+
+Esto **no** pide confirmación otra vez: el socio ya decidió que es el estándar.
+Lo único que sí se pregunta es el nombre, si no es obvio.
+
 ## Paso 1 — Arma (o actualiza) `CLAUDE.md` con esas respuestas
 
 Con lo que salió del Paso 0, escribe o actualiza `CLAUDE.md`: qué es el
